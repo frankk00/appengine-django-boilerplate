@@ -1,0 +1,42 @@
+application: appengine-boilerplate
+version: 1
+runtime: python
+api_version: 1
+
+default_expiration: '365d'
+
+handlers:
+- url: /static
+  static_dir: _generated_media/
+
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /_ah/queue/deferred
+  script: djangoappengine/deferred/handler.py
+  login: admin
+
+- url: /media/admin
+  static_dir: django/contrib/admin/media/
+  expiration: 0
+
+- url: /.*
+  script: djangoappengine/main/main.py
+
+builtins:
+- datastore_admin: on
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?fabfile\.py
+- ^(.*/)?django/conf/locale.*
+- ^(.*/)?django/contrib/(admin|databrowse).*
