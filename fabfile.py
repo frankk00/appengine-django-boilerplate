@@ -17,8 +17,6 @@ def get_repo(repo_info, repo_rename=None):
                 local("git clone %s" % repo_info.remote, capture=False)
             elif "bitbucket" in repo_info.remote or "googlecode" in repo_info.remote:
                 local("hg clone %s" % repo_info.remote, capture=False)
-            #elif "googlecode" in repo_info.remote:
-                #local("git svn clone %s %s" % (repo_info.remote, repo_info.local.split("/")[0]), capture=False)
 
 def symlink_packages():
     """sets up symlinked packages"""
@@ -27,16 +25,9 @@ def symlink_packages():
         RepoInfo('django-nonrel/django','django','https://bitbucket.org/wkornewald/django-nonrel'),
         RepoInfo('djangoappengine','djangoappengine','https://bitbucket.org/wkornewald/djangoappengine'),
         RepoInfo('djangotoolbox/djangotoolbox','djangotoolbox','https://bitbucket.org/wkornewald/djangotoolbox'),
-        RepoInfo('django-debug-toolbar/debug_toolbar','debug_toolbar','git://github.com/robhudson/django-debug-toolbar.git'),
-        #RepoInfo('django-extensions/django_extensions','django_extensions','git://github.com/django-extensions/django-extensions.git'),
-        RepoInfo('django-registration/registration','registration','https://bitbucket.org/ubernostrum/django-registration'),
-        RepoInfo('jinja2/jinja2', 'jinja2', 'git://github.com/mitsuhiko/jinja2.git'),
-        RepoInfo('surlex/src/surlex', 'surlex', 'git://github.com/codysoyland/surlex.git'),
-        RepoInfo('windmill/windmill', 'windmill', 'git://github.com/windmill/windmill.git'),
-        #RepoInfo('django-test-utils/test_utils', 'test_utils', 'git://github.com/ericholscher/django-test-utils.git'),
-        #RepoInfo('mock', 'mock', 'https://mock.googlecode.com/hg/'),
         RepoInfo('django-mediagenerator/mediagenerator', 'mediagenerator', 'https://iynaix@bitbucket.org/wkornewald/django-mediagenerator'),
-        RepoInfo('django-taggit/taggit', 'taggit', 'git://github.com/alex/django-taggit.git'),
+        #RepoInfo('django-debug-toolbar/debug_toolbar','debug_toolbar','git://github.com/robhudson/django-debug-toolbar.git'),
+        RepoInfo('jinja2/jinja2', 'jinja2', 'git://github.com/mitsuhiko/jinja2.git'),
     ]
 
     #remove current batch of symlinks
@@ -112,37 +103,8 @@ def rollback():
     """rolls back the application"""
     local("appcfg.py rollback .", capture=False)
 
-def populate():
-    """populates the database with categories and users"""
-    local("python2.5 manage.py loaddata ./initial_data.json") #categories
-    local("python2.5 manage.py loaddata ./users.json") #dummy users
-
 def clear_data():
     """clears the datastore and the blobstore"""
     local("rm -rf /tmp/*.datastore")
     local("rm -rf /tmp/*.blobstore")
-
-def merge_clean():
-    """cleans off all the .orig files after a merge"""
-    problem_files = []
-    #weed out the files
-    for root, dirs, files in os.walk(CURRENT_DIR):
-        for f in files:
-            if f.endswith(".orig"):
-                problem_files.append(os.path.join(root, f))
-
-    #confirm then remove the files
-    if problem_files:
-        for f in problem_files:
-            puts(f)
-        ans = confirm("Remove the above files?", default=False)
-        if ans:
-            for f in problem_files:
-                os.remove(f)
-
-def test():
-    """runs the test suite for the zoop application"""
-    #runs the django unit tests for the zoop application
-    local("python2.5 manage.py test --failfast zoop", capture=False)
-    #runs the windmill test suite for the zoop application
-    #local("p)thon2.5 manage.py test_windmill", capture=False)
+    local("rm -rf .gaedata/*")
