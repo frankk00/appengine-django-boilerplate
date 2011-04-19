@@ -98,11 +98,15 @@ if os.path.exists(settings.YUICOMPRESSOR_PATH):
     }
 
 
+#load the local developer settings if possible
+try:
+    from settings_local import *
+except:
+    pass
 
 
 
 
-#TODO: extra INSTALLED_APPS
 #TODO: settings.MEDIA_DEV_MODE = True
 #TODO: media bundles
 #dev: MEDIA_BUNDLES = ()
