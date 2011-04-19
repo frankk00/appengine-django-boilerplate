@@ -26,7 +26,6 @@ def symlink_packages():
         RepoInfo('djangoappengine','djangoappengine','https://bitbucket.org/wkornewald/djangoappengine'),
         RepoInfo('djangotoolbox/djangotoolbox','djangotoolbox','https://bitbucket.org/wkornewald/djangotoolbox'),
         RepoInfo('django-mediagenerator/mediagenerator', 'mediagenerator', 'https://iynaix@bitbucket.org/wkornewald/django-mediagenerator'),
-        #RepoInfo('django-debug-toolbar/debug_toolbar','debug_toolbar','git://github.com/robhudson/django-debug-toolbar.git'),
         RepoInfo('jinja2/jinja2', 'jinja2', 'git://github.com/mitsuhiko/jinja2.git'),
     ]
 
