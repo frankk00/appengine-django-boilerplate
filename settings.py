@@ -2,7 +2,6 @@
 # If you want to use a different backend you have to remove all occurences
 # of "djangoappengine" from this file.
 from djangoappengine.settings_base import *
-from djangoappengine.utils import on_production_server
 import os
 
 # Uncomment this if you're using the high-replication datastore.
@@ -107,4 +106,4 @@ if os.path.exists(settings.YUICOMPRESSOR_PATH):
 #TODO: settings.MEDIA_DEV_MODE = True
 #TODO: media bundles
 #dev: MEDIA_BUNDLES = ()
-#dev: settings.MEDIA_BUNDLES = ()
+#prod: settings.MEDIA_BUNDLES = ()
