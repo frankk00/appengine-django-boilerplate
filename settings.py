@@ -74,3 +74,37 @@ JINJA2_EXTENSIONS = (
     'jinja2.ext.do',
     'mediagenerator.contrib.jinja2ext.MediaExtension',
 )
+
+#jinja2 template loader
+TEMPLATE_LOADERS = (
+    'jinja2loader.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
+
+
+#media generator related settings
+from django.conf import settings
+settings.DEV_MEDIA_URL = '/devstatic/'
+settings.PRODUCTION_MEDIA_URL = '/static/'
+settings.GLOBAL_MEDIA_DIRS = (os.path.join(os.path.dirname(__file__), 'media'), )
+
+settings.YUICOMPRESSOR_PATH = os.path.join(os.path.dirname(__file__), 'yuicompressor-2.4.6.jar')
+if os.path.exists(settings.YUICOMPRESSOR_PATH):
+    settings.ROOT_MEDIA_FILTERS = {
+        'css': 'mediagenerator.filters.yuicompressor.YUICompressor',
+        'js': 'mediagenerator.filters.yuicompressor.YUICompressor',
+    }
+
+
+
+
+
+
+#TODO: extra INSTALLED_APPS
+#TODO: settings.MEDIA_DEV_MODE = True
+#TODO: media bundles
+#dev: MEDIA_BUNDLES = ()
+#dev: settings.MEDIA_BUNDLES = ()
