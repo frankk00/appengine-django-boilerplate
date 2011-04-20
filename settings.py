@@ -65,7 +65,9 @@ ROOT_URLCONF = 'urls'
 MEDIA_DEV_MODE = False
 DEV_MEDIA_URL = '/devstatic/'
 PRODUCTION_MEDIA_URL = '/static/'
-GLOBAL_MEDIA_DIRS = (os.path.join(PROJECT_ROOT, 'media'), )
+GLOBAL_MEDIA_DIRS = (os.path.join(PROJECT_ROOT, 'media'),
+                    os.path.join(PROJECT_ROOT, 'imported-sass-frameworks'),
+                    )
 
 YUICOMPRESSOR_PATH = os.path.join(PROJECT_ROOT, 'yuicompressor-2.4.6.jar')
 if os.path.exists(YUICOMPRESSOR_PATH):
@@ -76,16 +78,17 @@ if os.path.exists(YUICOMPRESSOR_PATH):
 
 #media bundles if local
 MEDIA_BUNDLES = (
-    ('creation.js', 'js/creation.js',),
 )
 
 
+"""
 #jinja2 globals and extensions as well as templates
 from mediagenerator.utils import media_url
 
 JINJA2_GLOBALS = {
     'media_url': media_url,
 }
+"""
 
 JINJA2_EXTENSIONS = (
     'jinja2loader.extensions.URLExtension',
@@ -104,6 +107,8 @@ TEMPLATE_LOADERS = (
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
 
 
+#testing compass framework
+SASS_FRAMEWORKS = ("compass",)
 
 #local development settings, put any overrides here
 if not on_production_server:
