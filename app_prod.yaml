@@ -44,3 +44,4 @@ skip_files:
 
 #production (do not upload)
 - ^(.*/)?media(?!generator).*
+- ^(.*/)?settings_local\.py

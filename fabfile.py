@@ -41,15 +41,9 @@ def symlink_packages():
 def settings(mode="dev"):
     """sets the app.yaml and settings.py and """
     if mode=="dev":
-        #replace with the production app.yaml and settings.py
-        #local("rm -rf app.yaml settings.py")
         local("ln -sf app_dev.yaml app.yaml")
-        #local("cp settings_dev.py settings.py")
     elif mode=="prod":
-        #replace with the production app.yaml and settings.py
-        #local("rm -rf app.yaml settings.py")
         local("ln -sf app_prod.yaml app.yaml")
-        #local("cp settings_prod.py settings.py")
     else:
         raise ValueError("The mode can only be 'dev' or 'prod'.")
 
