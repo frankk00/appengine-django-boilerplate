@@ -2,6 +2,7 @@
 # If you want to use a different backend you have to remove all occurences
 # of "djangoappengine" from this file.
 from djangoappengine.settings_base import *
+from djangoappengine.utils import on_production_server
 import os
 
 # Uncomment this if you're using the high-replication datastore.
@@ -61,7 +62,6 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 ROOT_URLCONF = 'urls'
 
 #media generator related settings
-#from django.conf import settings
 MEDIA_DEV_MODE = False
 DEV_MEDIA_URL = '/devstatic/'
 PRODUCTION_MEDIA_URL = '/static/'
@@ -80,14 +80,12 @@ MEDIA_BUNDLES = (
 )
 
 
-#jinja2 globals and extensions
-"""
+#jinja2 globals and extensions as well as templates
 from mediagenerator.utils import media_url
 
 JINJA2_GLOBALS = {
     'media_url': media_url,
 }
-"""
 
 JINJA2_EXTENSIONS = (
     'jinja2loader.extensions.URLExtension',
@@ -107,16 +105,11 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
 
 
 
-#load the local developer settings if possible
-try:
-    from settings_local import *
-except ImportError:
-    pass
+#local development settings, put any overrides here
+if not on_production_server:
+    INSTALLED_APPS += (
+        #development-only apps here, e.g. django-debug-toolbar
+    )
 
-
-
-
-#TODO: settings.MEDIA_DEV_MODE = True
-#TODO: media bundles
-#dev: MEDIA_BUNDLES = ()
-#prod: settings.MEDIA_BUNDLES = ()
+    #mediagenerator dev mode
+    MEDIA_DEV_MODE = True
