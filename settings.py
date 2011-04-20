@@ -60,12 +60,34 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 ROOT_URLCONF = 'urls'
 
+#media generator related settings
+#from django.conf import settings
+MEDIA_DEV_MODE = False
+DEV_MEDIA_URL = '/devstatic/'
+PRODUCTION_MEDIA_URL = '/static/'
+GLOBAL_MEDIA_DIRS = (os.path.join(PROJECT_ROOT, 'media'), )
+
+YUICOMPRESSOR_PATH = os.path.join(PROJECT_ROOT, 'yuicompressor-2.4.6.jar')
+if os.path.exists(YUICOMPRESSOR_PATH):
+    ROOT_MEDIA_FILTERS = {
+        'css': 'mediagenerator.filters.yuicompressor.YUICompressor',
+        'js': 'mediagenerator.filters.yuicompressor.YUICompressor',
+    }
+
+#media bundles if local
+MEDIA_BUNDLES = (
+    ('creation.js', 'js/creation.js',),
+)
+
+
 #jinja2 globals and extensions
+"""
 from mediagenerator.utils import media_url
 
 JINJA2_GLOBALS = {
     'media_url': media_url,
 }
+"""
 
 JINJA2_EXTENSIONS = (
     'jinja2loader.extensions.URLExtension',
@@ -84,24 +106,11 @@ TEMPLATE_LOADERS = (
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
 
 
-#media generator related settings
-from django.conf import settings
-settings.DEV_MEDIA_URL = '/devstatic/'
-settings.PRODUCTION_MEDIA_URL = '/static/'
-settings.GLOBAL_MEDIA_DIRS = (os.path.join(os.path.dirname(__file__), 'media'), )
-
-settings.YUICOMPRESSOR_PATH = os.path.join(os.path.dirname(__file__), 'yuicompressor-2.4.6.jar')
-if os.path.exists(settings.YUICOMPRESSOR_PATH):
-    settings.ROOT_MEDIA_FILTERS = {
-        'css': 'mediagenerator.filters.yuicompressor.YUICompressor',
-        'js': 'mediagenerator.filters.yuicompressor.YUICompressor',
-    }
-
 
 #load the local developer settings if possible
 try:
     from settings_local import *
-except:
+except ImportError:
     pass
 
 
