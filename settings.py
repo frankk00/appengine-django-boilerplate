@@ -78,7 +78,6 @@ if os.path.exists(YUICOMPRESSOR_PATH):
 
 #media bundles if local
 MEDIA_BUNDLES = (
-    ('creation.js', 'js/creation.js',),
 )
 
 
