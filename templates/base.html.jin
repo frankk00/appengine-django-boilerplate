@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{% block title %}It works!{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+    <!-- your stylesheets here -->
+
+    <script src="modernizr-1.7.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<header>
+
+		</header>
+
+        <div id="main" role="main">
+        {% block content %}
+        <h1>It works!</h1>
+        <p>
+        Your Django-nonrel installation is working fine.
+        Now go and build something useful with it. :)
+        </p>
+
+        <p>
+        Also, make sure you follow the
+        <a href="http://www.allbuttonspressed.com/blog/django">Django-nonrel &amp; webdev blog</a>,
+        so you don't miss any new features and improvements.
+        </p>
+
+        <p>
+        If you're new to Django you should take a look at the
+        <a href="http://docs.djangoproject.com/en/dev/">Django documentation</a>
+        and the
+        <a href="http://www.djangobook.com/">Django book</a>.
+        You'll also find <a href="http://djangosnippets.org/">djangosnippets</a>
+        very useful.
+        </p>
+
+        <p>
+        If you search for reusable apps that work with Django-nonrel here's a list to get you started:
+        </p>
+
+        <ul>
+        <li><a href="http://www.allbuttonspressed.com/projects/django-mediagenerator">django-mediagenerator</a>: Combines and compresses your JS and CSS files</li>
+        <li><a href="http://www.allbuttonspressed.com/projects/django-dbindexer">django-dbindexer</a>: Adds extra DB features (e.g., __iexact, JOINs, etc.) beyond the native DB API</li>
+        <li><a href="http://www.allbuttonspressed.com/projects/nonrel-search">nonrel-search</a>: A simple full-text search engine for App Engine and other non-relational DBs</li>
+        <li><a href="http://www.allbuttonspressed.com/projects/django-filetransfers">django-filetransfers</a>: Generic API for file uploads/downloads (e.g. via App Engine Blobstore)</li>
+        <li><a href="http://www.allbuttonspressed.com/projects/allbuttonspressed">allbuttonspressed</a>: The simple CMS/blog that powers the <a href="http://www.allbuttonspressed.com">Django-nonrel website</a></li>
+        <li><a href="http://www.allbuttonspressed.com/projects">...and our other projects...</a></li>
+        </ul>
+
+        <p>
+        Finally, take a look at the apps listed on <a href="http://djangopackages.com/">Django Packages</a>. Many simple Django apps (e.g., <a href="https://bitbucket.org/ubernostrum/django-registration">django-registration</a>) should work unmodified. If you want to use <a href="http://robhudson.github.com/django-debug-toolbar/">django-debug-toolbar</a> you need to disable the SQLDebugPanel in your settings.
+        </p>
+        {% endblock %}
+        </div>
+
+		<footer>
+
+		</footer>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="jquery-1.5.1.min.js"%3E%3C/script%3E'))</script>
+	<script src="underscore-1.1.6.min.js"></script>
+    <!-- your includes here -->
+	<!--[if lt IE 7 ]>
+	<script src="dd_belatedpng.js"></script>
+	<script> DD_belatedPNG.fix('img, .png_bg');</script>
+    <![endif]-->
+	<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+</body>
+</html>
