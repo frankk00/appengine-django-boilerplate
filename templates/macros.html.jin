@@ -1,0 +1,9 @@
+{# for rendering javascript tags #}
+{% macro jsfile(fname) -%}
+    {% include_media fname+'.js' %}
+{%- endmacro %}
+
+{# for rendering css tags #}
+{% macro cssfile(fname, mediatype="") -%}
+    {% include_media fname+'.css' %}
+{%- endmacro %}

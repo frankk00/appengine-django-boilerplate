@@ -86,12 +86,12 @@ MEDIA_BUNDLES = (
     ('modernizr-1.7.min.js',
                     {'filter': 'mediagenerator.filters.media_url.MediaURL'},
                     'js/libs/modernizr-1.7.min.js', ),
-    ('dd_belatedpng.js', 'js/jquery-1.5.1.min.js',
+    ('dd_belatedpng.js', 'js/libs/dd_belatedpng.js', )
 )
 
 
-"""
 #jinja2 globals and extensions as well as templates
+"""
 from mediagenerator.utils import media_url
 
 JINJA2_GLOBALS = {
