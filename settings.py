@@ -78,6 +78,15 @@ if os.path.exists(YUICOMPRESSOR_PATH):
 
 #media bundles if local
 MEDIA_BUNDLES = (
+    #css/sass files
+
+    #js files
+    ('jquery-1.5.1.min.js', 'js/libs/jquery-1.5.1.min.js',),
+    ('underscore-1.1.6.min.js', 'js/libs/underscore-1.1.6.min.js', ),
+    ('modernizr-1.7.min.js',
+                    {'filter': 'mediagenerator.filters.media_url.MediaURL'},
+                    'js/libs/modernizr-1.7.min.js', ),
+    ('dd_belatedpng.js', 'js/jquery-1.5.1.min.js',
 )
 
 
@@ -105,7 +114,6 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
-
 
 #testing compass framework
 SASS_FRAMEWORKS = ("compass",)
