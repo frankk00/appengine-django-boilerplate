@@ -50,6 +50,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
 
     #project context processors
+    "context_processors.is_production",
 )
 
 # This test runner captures stdout and associates tracebacks with their
