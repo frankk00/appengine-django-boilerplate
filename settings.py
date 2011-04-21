@@ -92,13 +92,6 @@ MEDIA_BUNDLES = (
 
 
 #jinja2 globals and extensions as well as templates
-"""
-from mediagenerator.utils import media_url
-
-JINJA2_GLOBALS = {
-    'media_url': media_url,
-}
-"""
 
 JINJA2_EXTENSIONS = (
     'jinja2loader.extensions.URLExtension',
@@ -127,3 +120,13 @@ if not on_production_server:
 
     #mediagenerator dev mode
     MEDIA_DEV_MODE = True
+
+# HACK: this has to be at the bottom of the file
+# if not the import will mess with the settings after it
+"""
+from mediagenerator.utils import media_url
+
+JINJA2_GLOBALS = {
+    'media_url': media_url,
+}
+"""

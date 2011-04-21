@@ -15,18 +15,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {#<link rel="shortcut icon" href="{{ media_url('favicon.ico') }}">#}
+    <link rel="shortcut icon" href="{{ media_url('favicon.ico') }}">
     <!-- your stylesheets here -->
 
-    {{ jsfile('modernizr-1.7.min') }}
 </head>
 <body>
 	<div id="container">
         {% include "header.html.jin" %}
 
         <div id="main" role="main">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
         </div>
 
         {% include "footer.html.jin" %}
@@ -38,6 +36,7 @@
         {{ jsfile('jquery-1.5.1.min') }}
     {% endif %}
     {{ jsfile('underscore-1.1.6.min') }}
+    {{ jsfile('modernizr-1.7.min') }}
 
     <!-- your includes here -->
 
