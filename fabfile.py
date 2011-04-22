@@ -1,6 +1,6 @@
 from fabric.api import local, prompt, puts
 from fabric.contrib.console import confirm
-from fabric.context_managers import lcd
+from fabric.context_managers import lcd, hide
 import os
 from collections import namedtuple
 
@@ -48,10 +48,22 @@ def settings(mode="dev"):
     else:
         raise ValueError("The mode can only be 'dev' or 'prod'.")
 
-def generatemedia(mode="dev"):
+def generatemedia(mode="dev", optimize=0):
     """generates the media for production"""
     settings(mode="prod")
     local("python manage.py generatemedia", capture=False)
+    #optimize the pngs using optipng and jpgs using jpegtran
+    #optimizations are in place and lossless
+    if optimize:
+        puts("Optimizing images...")
+        with hide('running', 'stdout', 'stderr'):
+            for root, dirs, files in os.walk("_generated_media"):
+                for f in files:
+                    fname = os.path.join(root, f)
+                    if f.endswith(".png"):
+                        local("optipng -quiet -o7 %s" % (fname))
+                    elif f.endswith(".jpg") or f.endswith(".jpeg"):
+                        local("jpegtran -copy none -optimize -outfile %s %s" % (fname, fname))
     settings(mode=mode)
 
 def deploy(mode="pexpect"):
