@@ -27,6 +27,7 @@ def symlink_packages():
         RepoInfo('djangotoolbox/djangotoolbox','djangotoolbox','https://bitbucket.org/wkornewald/djangotoolbox'),
         RepoInfo('django-mediagenerator/mediagenerator', 'mediagenerator', 'https://iynaix@bitbucket.org/wkornewald/django-mediagenerator'),
         RepoInfo('jinja2/jinja2', 'jinja2', 'git://github.com/mitsuhiko/jinja2.git'),
+        RepoInfo('gaeunit/gaeunit.py','gaeunit.py','git://github.com/iki/gaeunit.git'),
     ]
 
     #remove current batch of symlinks
