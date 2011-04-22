@@ -21,6 +21,10 @@ handlers:
   static_dir: django/contrib/admin/media/
   expiration: 0
 
+- url: /test.*
+  login: admin  # important if you deploy test directory in production!
+  script: gaeunit.py
+
 - url: /.*
   script: djangoappengine/main/main.py
 
