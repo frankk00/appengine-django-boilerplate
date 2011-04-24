@@ -1,7 +1,57 @@
-// styles.sass 
+/** 
+ * styles.sass
+
 @import "compass/reset"
+
+/**
+ * HTML5 Boilerplate stylesheet adapted and appended in the next section
+ * html5boilerplate.com
+
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ * Note: Only part of the stylesheet that is not included in the above's
+ * compass/reset is appended here
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+ins
+  background-color: #ff9
+  color: #000
+  text-decoration: none
+
+mark
+  background-color: #ff9
+  color: #000
+  font-style: italic
+  font-weight: bold
+
+del
+  text-decoration: line-through
+
+abbr[title], dfn[title]
+  border-bottom: 1px dotted
+  cursor: help
+
+hr
+  display: block
+  height: 1px
+  border: 0
+  border-top: 1px solid #ccc
+  margin: 1em 0
+  padding: 0
+
+input, select
+  vertical-align: middle
+
+
 @import "compass"
 @import "blueprint"
 
-body
-  +blueprint
+// Apply blueprint framework
+
++blueprint
+
+
