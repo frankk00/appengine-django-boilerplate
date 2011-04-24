@@ -80,6 +80,7 @@ if os.path.exists(YUICOMPRESSOR_PATH):
 #media bundles if local
 MEDIA_BUNDLES = (
     #css/sass files
+    ('main.css','sass/styles.sass'),
 
     #js files
     ('jquery-1.5.1.min.js', 'js/libs/jquery-1.5.1.min.js',),

@@ -17,6 +17,7 @@
 
     <link rel="shortcut icon" href="{{ media_url('favicon.ico') }}">
     <!-- your stylesheets here -->
+    {{ cssfile('main') }}
     {% block stylesheet %}{% endblock %}
 
     {{ jsfile('modernizr-1.7.min') }}
