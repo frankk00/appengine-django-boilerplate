@@ -17,11 +17,12 @@
 
     <link rel="shortcut icon" href="{{ media_url('favicon.ico') }}">
     <!-- your stylesheets here -->
+    {% block stylesheet %}{% endblock %}
 
     {{ jsfile('modernizr-1.7.min') }}
 </head>
 <body>
-	<div id="container">
+	<div id="container" class="container">
         {% include "header.html.jin" %}
 
         <div id="main" role="main">
