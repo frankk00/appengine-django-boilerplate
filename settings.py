@@ -50,6 +50,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
 
     #project context processors
+    "context_processors.is_production",
 )
 
 # This test runner captures stdout and associates tracebacks with their
@@ -78,17 +79,20 @@ if os.path.exists(YUICOMPRESSOR_PATH):
 
 #media bundles if local
 MEDIA_BUNDLES = (
+    #css/sass files
+    ('main.css','sass/styles.sass'),
+
+    #js files
+    ('jquery-1.5.1.min.js', 'js/libs/jquery-1.5.1.min.js',),
+    ('underscore-1.1.6.min.js', 'js/libs/underscore-1.1.6.min.js', ),
+    ('modernizr-1.7.min.js',
+                    {'filter': 'mediagenerator.filters.media_url.MediaURL'},
+                    'js/libs/modernizr-1.7.min.js', ),
+    ('dd_belatedpng.js', 'js/libs/dd_belatedpng.js', )
 )
 
 
-"""
 #jinja2 globals and extensions as well as templates
-from mediagenerator.utils import media_url
-
-JINJA2_GLOBALS = {
-    'media_url': media_url,
-}
-"""
 
 JINJA2_EXTENSIONS = (
     'jinja2loader.extensions.URLExtension',
@@ -106,7 +110,6 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates/"),)
 
-
 #testing compass framework
 SASS_FRAMEWORKS = ("compass",)
 
@@ -118,3 +121,13 @@ if not on_production_server:
 
     #mediagenerator dev mode
     MEDIA_DEV_MODE = True
+
+# HACK: this has to be at the bottom of the file
+# if not the import will mess with the settings after it
+"""
+from mediagenerator.utils import media_url
+
+JINJA2_GLOBALS = {
+    'media_url': media_url,
+}
+"""
