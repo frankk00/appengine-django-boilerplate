@@ -49,6 +49,7 @@ Note for namespaced urls you have to use quotes eg:
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template import loader, Origin, TemplateDoesNotExist, InvalidTemplateLibrary
+from mediagenerator.utils import media_url
 
 try:
     import jinja2
@@ -113,6 +114,9 @@ class Loader(loader.BaseLoader):
     )
 
     env.globals.update(GLOBALS)
+    # HACK: add the media_url function here as doing it in settings.py
+    # results in nasty settings import errors
+    env.globals['media_url'] = media_url
 
     env.template_class = Template
 

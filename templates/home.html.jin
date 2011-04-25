@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html.jin" %}
+
 {% block title %}It works!{% endblock %}
 
 {% block content %}
@@ -28,12 +29,12 @@ If you search for reusable apps that work with Django-nonrel here's a list to ge
 </p>
 
 <ul>
-  <li><a href="http://www.allbuttonspressed.com/projects/django-mediagenerator">django-mediagenerator</a>: Combines and compresses your JS and CSS files</li>
-  <li><a href="http://www.allbuttonspressed.com/projects/django-dbindexer">django-dbindexer</a>: Adds extra DB features (e.g., __iexact, JOINs, etc.) beyond the native DB API</li>
-  <li><a href="http://www.allbuttonspressed.com/projects/nonrel-search">nonrel-search</a>: A simple full-text search engine for App Engine and other non-relational DBs</li>
-  <li><a href="http://www.allbuttonspressed.com/projects/django-filetransfers">django-filetransfers</a>: Generic API for file uploads/downloads (e.g. via App Engine Blobstore)</li>
-  <li><a href="http://www.allbuttonspressed.com/projects/allbuttonspressed">allbuttonspressed</a>: The simple CMS/blog that powers the <a href="http://www.allbuttonspressed.com">Django-nonrel website</a></li>
-  <li><a href="http://www.allbuttonspressed.com/projects">...and our other projects...</a></li>
+<li><a href="http://www.allbuttonspressed.com/projects/django-mediagenerator">django-mediagenerator</a>: Combines and compresses your JS and CSS files</li>
+<li><a href="http://www.allbuttonspressed.com/projects/django-dbindexer">django-dbindexer</a>: Adds extra DB features (e.g., __iexact, JOINs, etc.) beyond the native DB API</li>
+<li><a href="http://www.allbuttonspressed.com/projects/nonrel-search">nonrel-search</a>: A simple full-text search engine for App Engine and other non-relational DBs</li>
+<li><a href="http://www.allbuttonspressed.com/projects/django-filetransfers">django-filetransfers</a>: Generic API for file uploads/downloads (e.g. via App Engine Blobstore)</li>
+<li><a href="http://www.allbuttonspressed.com/projects/allbuttonspressed">allbuttonspressed</a>: The simple CMS/blog that powers the <a href="http://www.allbuttonspressed.com">Django-nonrel website</a></li>
+<li><a href="http://www.allbuttonspressed.com/projects">...and our other projects...</a></li>
 </ul>
 
 <p>
