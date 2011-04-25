@@ -20,7 +20,7 @@
     {{ cssfile('main') }}
     {% block stylesheet %}{% endblock %}
 
-    {{ jsfile('modernizr-1.7.min') }}
+    {{ jsfile('lab-1.2.0.min') }}
 </head>
 <body>
 	<div id="container" class="container">
@@ -33,11 +33,16 @@
         {% include "footer.html.jin" %}
 	</div>
 
-    {% if is_production %}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    {% else %}
-        {{ jsfile('jquery-1.5.1.min') }}
-    {% endif %}
+    <script>
+        $LAB.script('modernizr-1.7.min.js').script(
+            {%- if is_production %}
+                '//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'
+            {% else %}
+                'jquery-1.5.1.min'
+            {% endif -%}
+        ).wait();
+    </script>
+    {% include_media('modernizr-1.7.min.js') %}
     {{ jsfile('underscore-1.1.6.min') }}
 
     <!-- your includes here -->
