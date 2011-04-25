@@ -86,9 +86,8 @@ MEDIA_BUNDLES = (
     ('lab-1.2.0.min.js', 'js/libs/lab-1.2.0.min.js',),
     ('jquery-1.5.1.min.js', 'js/libs/jquery-1.5.1.min.js',),
     ('underscore-1.1.6.min.js', 'js/libs/underscore-1.1.6.min.js', ),
-    ('modernizr-1.7.min.js',
-                    #{'filter': 'mediagenerator.filters.media_url.MediaURL'},
-                    'js/libs/modernizr-1.7.min.js', ),
+    ('modernizr-1.7.min.js', 'js/libs/modernizr-1.7.min.js', ),
+    ('media_url.js', {'filter': 'mediagenerator.filters.media_url.MediaURL'}, ),
     ('dd_belatedpng.js', 'js/libs/dd_belatedpng.js', )
 )
 

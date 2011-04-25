@@ -41,7 +41,7 @@
             {% else %}
                 '{{ media_url("jquery-1.5.1.min.js") }}'
             {% endif -%}
-        ).{{ jslab("underscore-1.1.6.min") }}
+        ).{{ jslab("underscore-1.1.6.min") }}.{{ jslab("media_url") }}
         {% block extrajsincludes %}{% endblock %}
         .wait(function() {
             {% block extrajs %}{% endblock %}
