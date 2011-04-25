@@ -87,7 +87,7 @@ MEDIA_BUNDLES = (
     ('jquery-1.5.1.min.js', 'js/libs/jquery-1.5.1.min.js',),
     ('underscore-1.1.6.min.js', 'js/libs/underscore-1.1.6.min.js', ),
     ('modernizr-1.7.min.js',
-                    {'filter': 'mediagenerator.filters.media_url.MediaURL'},
+                    #{'filter': 'mediagenerator.filters.media_url.MediaURL'},
                     'js/libs/modernizr-1.7.min.js', ),
     ('dd_belatedpng.js', 'js/libs/dd_belatedpng.js', )
 )

@@ -1,4 +1,4 @@
-{% from 'macros.html.jin' import jsfile, cssfile %}
+{% from 'macros.html.jin' import jsfile, jslab, cssfile %}
 <!doctype html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -34,16 +34,26 @@
 	</div>
 
     <script>
-        $LAB.script('modernizr-1.7.min.js').script(
+        $LAB.{{ jslab("modernizr-1.7.min") }}.script(
             {%- if is_production %}
                 '//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'
             {% else %}
-                'jquery-1.5.1.min'
+                '{{ media_url("jquery-1.5.1.min.js") }}'
             {% endif -%}
-        ).wait();
+        ).{{ jslab("underscore-1.1.6.min") }}
+        .wait(function() {
+            alert("ALL DONE!");
+
+
+            {% if is_production %}
+            //google analytics
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+            {% endif %}
+        });
     </script>
-    {% include_media('modernizr-1.7.min.js') %}
-    {{ jsfile('underscore-1.1.6.min') }}
 
     <!-- your includes here -->
 
@@ -51,14 +61,5 @@
     {{ jsfile('dd_belatedpng') }}
 	<script> DD_belatedPNG.fix('img, .png_bg');</script>
     <![endif]-->
-
-    {% if is_production %}
-	<script>
-		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-    {% endif %}
 </body>
 </html>
