@@ -1,7 +1,8 @@
 /** 
  * styles.sass
 
-@import "compass/reset"
+@import "base"
+
 
 /**
  * HTML5 Boilerplate stylesheet adapted and appended in the next section
@@ -13,9 +14,6 @@
  * html5doctor.com/html-5-reset-stylesheet/
  * Note: Only part of the stylesheet that is not included in the above's
  * compass/reset is appended here
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
-  display: block
 
 ins
   background-color: #ff9
@@ -170,6 +168,18 @@ input:invalid, textarea:invalid
 .ie7 img
   -ms-interpolation-mode: bicubic
 
+/**
+ * Primary styles
+ *
+ * Author:
+
+
+
+
+
+
+
+
 
 /**
  * HTML5 Boilerplate helper classes
@@ -236,13 +246,73 @@ input:invalid, textarea:invalid
   zoom: 1
 
 
+/**
+ * Media queries for responsive design.
+ *
+ * These follow after primary styles so they will successfully override.
+
+@media all and (orientation:portrait)
+  /* Style adjustments for portrait mode goes here
 
 
-@import "compass"
-@import "blueprint"
+@media all and (orientation:landscape)
+  /* Style adjustments for landscape mode goes here
+
+
+/* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
+ * consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/
+@media screen and (max-device-width: 480px)
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust
+  /* html 
+  /*  -webkit-text-size-adjust: none
+  /*  -ms-text-size-adjust: none
+
+/**
+ * Print styles.
+ *
+ * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+@media print
+  *
+    background: transparent !important
+    color: black !important
+    text-shadow: none !important
+    filter: none !important
+    -ms-filter: none !important
+  /* Black prints faster: sanbeiji.com/archives/953
+  a
+    color: #444 !important
+    text-decoration: underline
+    &:visited
+      color: #444 !important
+      text-decoration: underline
+    &[href]:after
+      content: " (" attr(href) ")"
+  abbr[title]:after
+    content: " (" attr(title) ")"
+  .ir a:after
+    content: ""
+  a
+    &[href^="javascript:"]:after, &[href^="#"]:after
+      content: ""
+  /* Don't show links for images, or javascript/internal links
+  pre, blockquote
+    border: 1px solid #999
+    page-break-inside: avoid
+  thead
+    display: table-header-group
+  /* css-discuss.incutio.com/wiki/Printing_Tables
+  tr, img
+    page-break-inside: avoid
+  @page
+    margin: 0.5cm
+
+  p, h2, h3
+    orphans: 3
+    widows: 3
+  h2, h3
+    page-break-after: avoid
+
 
 // Apply blueprint framework
 
 +blueprint
-
-
