@@ -1,6 +1,6 @@
 from fabric.api import local, prompt, puts
 from fabric.contrib.console import confirm
-from fabric.context_managers import lcd
+from fabric.context_managers import lcd, hide
 import os
 from collections import namedtuple
 
@@ -27,6 +27,7 @@ def symlink_packages():
         RepoInfo('djangotoolbox/djangotoolbox','djangotoolbox','https://bitbucket.org/wkornewald/djangotoolbox'),
         RepoInfo('django-mediagenerator/mediagenerator', 'mediagenerator', 'https://iynaix@bitbucket.org/wkornewald/django-mediagenerator'),
         RepoInfo('jinja2/jinja2', 'jinja2', 'git://github.com/mitsuhiko/jinja2.git'),
+        RepoInfo('gaeunit/gaeunit.py','gaeunit.py','git://github.com/iki/gaeunit.git'),
     ]
 
     #remove current batch of symlinks
@@ -47,10 +48,22 @@ def settings(mode="dev"):
     else:
         raise ValueError("The mode can only be 'dev' or 'prod'.")
 
-def generatemedia(mode="dev"):
+def generatemedia(mode="dev", optimize=0):
     """generates the media for production"""
     settings(mode="prod")
     local("python manage.py generatemedia", capture=False)
+    #optimize the pngs using optipng and jpgs using jpegtran
+    #optimizations are in place and lossless
+    if optimize:
+        puts("Optimizing images...")
+        with hide('running', 'stdout', 'stderr'):
+            for root, dirs, files in os.walk("_generated_media"):
+                for f in files:
+                    fname = os.path.join(root, f)
+                    if f.endswith(".png"):
+                        local("optipng -quiet -o7 %s" % (fname))
+                    elif f.endswith(".jpg") or f.endswith(".jpeg"):
+                        local("jpegtran -copy none -optimize -outfile %s %s" % (fname, fname))
     settings(mode=mode)
 
 def deploy(mode="pexpect"):
