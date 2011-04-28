@@ -76,7 +76,8 @@ def deploy(mode="pexpect"):
         clear_data() #clears the blob and datastores
         settings(mode="prod") #set to production settings
         #populate the categories
-        local("python2.5 manage.py loaddata ./initial_data.json")
+        if os.path.exists("./initial_data.json")
+            local("python2.5 manage.py loaddata ./initial_data.json")
         username = prompt("Please enter your username: ")
         cmd = "python manage.py deploy --email='%s@gmail.com'" % username
 
